@@ -1,0 +1,113 @@
+################## comandos do git via terminal ########################
+
+#CONFIGURANDO O GIT PARA USO
+		
+git config --global user.name "USUARIO" = = > Adiciona o nome do usuario ao  
+git config --global user.email "EMAIL"	= = > Adiciona o email do usuario do GIT enterliga
+git init				= = > Inicia o Git onde o comando foi solicitado
+
+git status 				= = > Verifica qual o estado dos arquivos se esta untracked ou changes Normalmente novos
+
+* untracked = Não versionado
+* changes   = Arquivos que precisam ser comentados  
+
+######################################################### EXEMPLO DE STATUS ##############################################################
+
+[root@servidordeteste GIT_hub]# git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        banner.jpg
+        company.jpg
+        old/
+        sobre.jpg
+        sobre.txt
+
+
+
+######################################################### EXEMPLO DE ADD ###############################################################
+[root@servidordeteste GIT_hub]# git add banner.jpg
+[root@servidordeteste GIT_hub]# git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   banner.jpg
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        company.jpg
+        old/
+        sobre.jpg
+        sobre.txt
+
+
+[root@servidordeteste GIT_hub]# git add .  = VAI ADICIONAR TODOS OS ARQUIVOS NESSE DIRETORIO 
+[root@servidordeteste GIT_hub]# git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   company.jpg
+        new file:   sobre.jpg
+        new file:   sobre.txt
+
+
+
+####################################################### EXEMPLO DE COMMIT #############################################################
+[root@servidordeteste GIT_hub]# git commit
+[master (root-commit) f0f4d2b] Adicionando banner do site
+
+[root@servidordeteste GIT_hub]# git commit -m "Adicionando novos arquivos" = COMENTANDO VARIOS ARQUIVOS 
+[master 63b6f77] Adicionando novos arquivos
+ 3 files changed, 1 insertion(+)
+ create mode 100644 company.jpg
+ create mode 100644 sobre.jpg
+ create mode 100644 sobre.txt
+
+
+###################################################### COMANDO PARA VERIFICAR LOG #####################################################
+[root@servidordeteste GIT_hub]# git log
+commit 63b6f77d07b7c4e0f864b0c566a6d14e6f2b7c9c (HEAD -> master)
+Author: Eduardo Sousa <eduardo@rrsign.com.br>
+Date:   Tue Nov 8 09:35:19 2022 -0500
+
+    Adicionando novos arquivos
+
+commit f0f4d2bdf68a53f3348e5f1c8d12bedb31a8e33f
+Author: Eduardo Sousa <eduardo@rrsign.com.br>
+Date:   Tue Nov 8 09:31:54 2022 -0500
+
+    Adicionando banner do site
+[root@servidordeteste GIT_hub]# git status
+On branch master
+nothing to commit, working tree clean
+
+##################################################### MODIFICANDO ARQUIVO ###########################################################
+[root@servidordeteste GIT_hub]# vim sobre.txt
+[root@servidordeteste GIT_hub]# git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   sobre.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[root@servidordeteste GIT_hub]#  git diff sobre.txt
+diff --git a/sobre.txt b/sobre.txt
+index 58c0b2c..2d3ead5 100644
+--- a/sobre.txt
++++ b/sobre.txt
+@@ -1 +1 @@
+-Oi eu sou Eduardo analista de infraestrutura
++Oi eu sou analista de infraestrutura
+[root@servidordeteste GIT_hub]#
+
+##################################################### MODIFICANDO ARQUIVO ###########################################################
+
+[root@servidordeteste GIT_hub]#  git diff sobre.txt = o comando DIFF vai verificar se teve modificação do arquivo original do GIT para o arquivo local 
+
